@@ -188,7 +188,7 @@
     <div class="audio-section">
       <p>🎵 <b>Birthday Song Suniye:</b></p>
       <audio id="birthdayAudio" controls loop playsinline preload="auto">
-        <source src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/Free%20Download%20Kid%20Songs%20Mp3%20Audio%20Hindi.mp3" type="audio/mpeg">
+        <source src="https://cdn.jsdelivr.net/gh/manthanbajaj371-tech/Happy-Birthday-Masi-@main/Free%20Download%20Kid%20Songs%20Mp3%20Audio%20Hindi.mp3" type="audio/mpeg">
         Aapka browser audio play nahi kar pa raha hai.
       </audio>
       <button class="play-btn" id="playAudioBtn" type="button">▶ Play Birthday Song</button>
@@ -203,17 +203,41 @@
   <script>
     const audio = document.getElementById('birthdayAudio');
     const playBtn = document.getElementById('playAudioBtn');
+    const audioUrl = 'https://cdn.jsdelivr.net/gh/manthanbajaj371-tech/Happy-Birthday-Masi-@main/Free%20Download%20Kid%20Songs%20Mp3%20Audio%20Hindi.mp3';
 
-    const tryPlayAudio = () => {
-      audio.play().catch(() => {
-        // Browser may block autoplay until the user interacts.
-      });
+    const ensureAudioSource = () => {
+      if (!audio.src || audio.src !== audioUrl) {
+        audio.src = audioUrl;
+        audio.load();
+      }
+    };
+
+    const tryPlayAudio = async () => {
+      ensureAudioSource();
+
+      try {
+        await audio.play();
+        playBtn.textContent = '♫ Playing...';
+      } catch (error) {
+        console.warn('Audio could not start automatically:', error);
+        playBtn.textContent = '▶ Play Birthday Song';
+      }
     };
 
     playBtn.addEventListener('click', tryPlayAudio);
+
+    audio.addEventListener('error', () => {
+      playBtn.textContent = '⚠ Audio load failed';
+      console.error('Audio file failed to load.');
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.textContent = '▶ Play Birthday Song';
+    });
+
     document.addEventListener('click', () => {
       if (audio.paused) {
-        tryPlayAudio();
+        ensureAudioSource();
       }
     }, { once: true });
   </script>
