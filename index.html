@@ -23,7 +23,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 800px;
+      max-width: 900px;
       width: 100%;
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
@@ -58,11 +58,32 @@
       padding: 15px 0;
       background: rgba(0, 0, 0, 0.2);
       border-radius: 15px;
+      position: relative;
+    }
+    .marquee-box::before,
+    .marquee-box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 60px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-box::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(255, 117, 140, 0.9), transparent);
+    }
+    .marquee-box::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(255, 117, 140, 0.9), transparent);
     }
     .marquee-track {
       display: inline-flex;
+      align-items: center;
       gap: 20px;
-      animation: scrollLeft 18s linear infinite;
+      width: max-content;
+      animation: scrollLeft 30s linear infinite;
     }
     .marquee-track:hover {
       animation-play-state: paused;
@@ -75,13 +96,14 @@
       border: 3px solid #fff;
       object-fit: cover;
       transition: transform 0.3s;
+      flex-shrink: 0;
     }
     .marquee-track img:hover {
       transform: scale(1.05);
     }
     @keyframes scrollLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
     .audio-section {
       margin: 25px 0;
@@ -122,19 +144,31 @@
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/1700410418383.jpg" alt="Birthday Photo 4">
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/1700410418535.jpg" alt="Birthday Photo 5">
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG-20250725-WA0068.jpg" alt="Birthday Photo 6">
-
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240325_115127.jpg" alt="Birthday Photo 7">
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240602_210126.jpg" alt="Birthday Photo 8">
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240602_210158.jpg" alt="Birthday Photo 9">
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240602_210212.jpg" alt="Birthday Photo 10">
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG-20250725-WA0055.jpg" alt="Birthday Photo 11">
         <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG-20250725-WA0069.jpg" alt="Birthday Photo 12">
+
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG-20250725-WA0058.jpg" alt="Birthday Photo 1 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/1700410418319.jpg" alt="Birthday Photo 2 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/1700410418349.jpg" alt="Birthday Photo 3 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/1700410418383.jpg" alt="Birthday Photo 4 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/1700410418535.jpg" alt="Birthday Photo 5 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG-20250725-WA0068.jpg" alt="Birthday Photo 6 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240325_115127.jpg" alt="Birthday Photo 7 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240602_210126.jpg" alt="Birthday Photo 8 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240602_210158.jpg" alt="Birthday Photo 9 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG_20240602_210212.jpg" alt="Birthday Photo 10 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG-20250725-WA0055.jpg" alt="Birthday Photo 11 Duplicate">
+        <img src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/IMG-20250725-WA0069.jpg" alt="Birthday Photo 12 Duplicate">
       </div>
     </div>
 
     <div class="audio-section">
       <p>🎵 <b>Birthday Song Suniye:</b></p>
-      <audio controls autoplay loop>
+      <audio controls autoplay loop muted playsinline>
         <source src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/the_mountain-happy-birthday-508020.mp3" type="audio/mpeg">
         Aapka browser audio play nahi kar pa raha hai.
       </audio>
