@@ -111,12 +111,31 @@
       padding: 15px;
       border-radius: 15px;
     }
+    .audio-section p {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
     audio {
       width: 100%;
       max-width: 400px;
       margin-top: 10px;
       outline: none;
       border-radius: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .play-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 999px;
+      background: #fff;
+      color: #ff5d7f;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
     .message-card {
       font-size: 1.1rem;
@@ -168,10 +187,11 @@
 
     <div class="audio-section">
       <p>🎵 <b>Birthday Song Suniye:</b></p>
-      <audio controls autoplay loop muted playsinline>
-        <source src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/Free Download Kid Songs Mp3 Audio Hindi.mp3" type="audio/mpeg">
+      <audio id="birthdayAudio" controls loop playsinline preload="auto">
+        <source src="https://raw.githubusercontent.com/manthanbajaj371-tech/Happy-Birthday-Masi-/main/Free%20Download%20Kid%20Songs%20Mp3%20Audio%20Hindi.mp3" type="audio/mpeg">
         Aapka browser audio play nahi kar pa raha hai.
       </audio>
+      <button class="play-btn" id="playAudioBtn" type="button">▶ Play Birthday Song</button>
     </div>
 
     <div class="message-card">
@@ -179,6 +199,24 @@
       <p>Bhagwan kare aapka har din khushiyo se bhara rahe aur aap hamesha muskurati rahein!</p>
     </div>
   </div>
+
+  <script>
+    const audio = document.getElementById('birthdayAudio');
+    const playBtn = document.getElementById('playAudioBtn');
+
+    const tryPlayAudio = () => {
+      audio.play().catch(() => {
+        // Browser may block autoplay until the user interacts.
+      });
+    };
+
+    playBtn.addEventListener('click', tryPlayAudio);
+    document.addEventListener('click', () => {
+      if (audio.paused) {
+        tryPlayAudio();
+      }
+    }, { once: true });
+  </script>
 
 </body>
 </html>
